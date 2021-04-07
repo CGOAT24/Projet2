@@ -41,28 +41,32 @@ public class Player : MonoBehaviour{
         _direction = new Vector3(0, direction2D.y, 0);
         _direction.Normalize();
         _rb.velocity = _direction * _vitesse;
-
-        _rotation = direction2D.x;
-        _rb.AddTorque(_rotation * _vitesse);
     }
 
     private void moveAction_canceled(InputAction.CallbackContext obj){
         _direction = new Vector3(0f, 0f, 0f);
         _rb.velocity = _direction * _vitesse;
-
-        _rotation = 0f;
     }
 
     private void fireAction_performed(InputAction.CallbackContext obj){
         Instantiate(_missilePrefab, transform.position, Quaternion.identity);
     }
 
+    /*
+    *
+    *   À FAIRE
+    *
+    */
     private void turnAction_performed(InputAction.CallbackContext obj){
-
+        Vector2 direction2D = obj.ReadValue<Vector2>();
     }
 
+    /*
+    *
+    *   À FAIRE
+    *
+    */
     private void turnAction_canceled(InputAction.CallbackContext obj){
 
-        
     }
 }
