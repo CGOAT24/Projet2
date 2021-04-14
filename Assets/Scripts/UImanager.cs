@@ -9,7 +9,6 @@ public class UImanager : MonoBehaviour{
 
     [SerializeField] private InputActionAsset _actionAsset = default;
     [SerializeField] private GameObject _pausePanel = default;
-    [SerializeField] private GameObject _pauseText = default;
 
     void Start(){
         InputAction pauseMenu = _actionAsset.FindAction("PauseMenu");
@@ -26,9 +25,13 @@ public class UImanager : MonoBehaviour{
             _pausePanel.SetActive(true);
         }
         else if(_isPaused){
+           Resume_Game();
+        }
+    }
+
+    public void Resume_Game(){
             _isPaused = false;
             _pausePanel.SetActive(false);
             Time.timeScale = 1;
-        }
     }
 }
