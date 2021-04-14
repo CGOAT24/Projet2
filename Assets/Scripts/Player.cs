@@ -13,7 +13,6 @@ public class Player : MonoBehaviour{
     private float _rotation = 0;
     private Rigidbody2D _rb;
 
-    // Start is called before the first frame update
     void Start(){
         _rb = this.GetComponent<Rigidbody2D>();
 
@@ -61,7 +60,7 @@ public class Player : MonoBehaviour{
         Vector2 direction = obj.ReadValue<Vector2>();
         _rotation += direction.x;
         
-        _rb.rotation = _rotation * _vitesse;
+        _rb.rotation += _rotation * _vitesse;
     }
 
     /*
