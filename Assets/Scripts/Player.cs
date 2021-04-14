@@ -58,7 +58,7 @@ public class Player : MonoBehaviour{
     */
     private void turnAction_performed(InputAction.CallbackContext obj){
         Vector2 direction = obj.ReadValue<Vector2>();
-        _rotation += direction.x;
+        _rotation += Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
         _rb.rotation += _rotation * _vitesse;
     }
