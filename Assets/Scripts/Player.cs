@@ -10,7 +10,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private GameObject _missilePrefab = default;
 
     private Vector3 _direction;
-    private float _rotation;
+    private float _rotation = 0;
     private Rigidbody2D _rb;
 
     // Start is called before the first frame update
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour{
 
     private void moveAction_performed(InputAction.CallbackContext obj){
         Vector2 direction2D = obj.ReadValue<Vector2>();
-        _direction = new Vector3(0, direction2D.y, 0);
+        _direction = new Vector3(direction2D.x, direction2D.y, 0);
         _direction.Normalize();
         _rb.velocity = _direction * _vitesse;
     }
@@ -58,7 +58,10 @@ public class Player : MonoBehaviour{
     *
     */
     private void turnAction_performed(InputAction.CallbackContext obj){
-        Vector2 direction2D = obj.ReadValue<Vector2>();
+        Vector2 direction = obj.ReadValue<Vector2>();
+        _rotation += direction.x;
+        
+        _rb.rotation = _rotation * _vitesse;
     }
 
     /*
@@ -67,6 +70,6 @@ public class Player : MonoBehaviour{
     *
     */
     private void turnAction_canceled(InputAction.CallbackContext obj){
-
+        
     }
 }
