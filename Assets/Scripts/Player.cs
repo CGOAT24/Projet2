@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour{
+public class Player : MonoBehaviour {
 
     [SerializeField] private float _vitesse = 10f;
     [SerializeField] private InputActionAsset _actionAsset = default;
     [SerializeField] private GameObject _missilePrefab = default;
+    [SerializeField] private GameObject _turrent;
+    [SerializeField] private float _turnSpeed;
 
     private Vector3 _direction;
-    private float _rotation = 0;
     private Rigidbody2D _rb;
 
     // Start is called before the first frame update
@@ -58,10 +59,9 @@ public class Player : MonoBehaviour{
     *
     */
     private void turnAction_performed(InputAction.CallbackContext obj){
-        Vector2 direction = obj.ReadValue<Vector2>();
-        _rotation += direction.x;
-        
-        _rb.rotation = _rotation * _vitesse;
+        Vector2 diff = obj.ReadValue<Vector2>();
+
+        _turrent.transform.rotation = Quaternion.Euler(new Vector3(0, 0, (transform.eulerAngles.z + diff.y)*_turnSpeed));
     }
 
     /*

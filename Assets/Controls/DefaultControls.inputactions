@@ -24,7 +24,7 @@
                 {
                     "name": "Turn",
                     "type": "Value",
-                    "id": "e16c0e3e-391b-4b72-97b7-232a9e5e4aa1",
+                    "id": "9ccc7011-bd88-47b5-9016-735aa199b6e5",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -98,37 +98,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "WASD",
-                    "id": "ee5cbbd9-37da-4811-bfbd-dcdfb852fb1b",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "78d23486-6849-4466-99cb-3c420654208e",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Turn",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Left",
-                    "id": "2ea4c63a-46d0-4de6-ba1c-5a09c2e447cf",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "88ddcfb8-926b-43c8-9e92-67a55d4c8cee",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         },
