@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UImanager : MonoBehaviour{
@@ -16,6 +17,11 @@ public class UImanager : MonoBehaviour{
 
         pauseMenu.Enable();
         _pausePanel.SetActive(false);
+
+        InputAction quit = _actionAsset.FindAction("Quit");
+        quit.performed += quit_performed;
+
+        quit.Enable();
     }
 
     void pauseMenu_performed(InputAction.CallbackContext obj){
@@ -29,9 +35,13 @@ public class UImanager : MonoBehaviour{
         }
     }
 
+    void quit_performed(InputAction.CallbackContext obj){
+        SceneManager.LoadScene(0);
+    }
+
     public void Resume_Game(){
             _isPaused = false;
             _pausePanel.SetActive(false);
             Time.timeScale = 1;
-    }
+    }  
 }
