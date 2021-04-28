@@ -176,14 +176,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Quit",
-                    "type": "Button",
-                    "id": "90ace3d6-1d67-4afe-93be-a9e870cc2fcc",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -195,17 +187,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0bffa5c3-2d41-4605-a952-9f7205504947",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

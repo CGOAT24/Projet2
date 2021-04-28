@@ -9,12 +9,15 @@ public class Player : MonoBehaviour{
     [SerializeField] private InputActionAsset _actionAsset = default;
     [SerializeField] private GameObject _missilePrefab = default;
 
+    private float _viesJoueur = 3;
+    private UImanager _uiManager;
     private Vector3 _direction;
     private float _rotation = 0;
     private Rigidbody2D _rb;
 
     void Start(){
         _rb = this.GetComponent<Rigidbody2D>();
+        _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
 
         Set_Controls();
     }
@@ -70,5 +73,14 @@ public class Player : MonoBehaviour{
     */
     private void turnAction_canceled(InputAction.CallbackContext obj){
         
+    }
+
+    public void Take_Damage() {
+        _viesJoueur--;
+        _uiManager.RemovelifeDisplay();
+
+        if(_viesJoueur < 1) {
+            Destroy(this.gameObject);
+        }
     }
 }
