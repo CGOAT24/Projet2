@@ -25,7 +25,7 @@
                     "name": "Turn",
                     "type": "Value",
                     "id": "e16c0e3e-391b-4b72-97b7-232a9e5e4aa1",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -65,9 +65,42 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Arrow Keys",
+                    "id": "e0c616cc-96e8-4138-8662-c3ed88e24d23",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "0bc142b9-4400-4901-afbc-e3770849417a",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "99654861-bade-4b50-823e-aa3066b3b927",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "left",
-                    "id": "c2cac395-0295-4a01-b11a-2b694e7bed9e",
-                    "path": "<Keyboard>/a",
+                    "id": "f4837a4d-b5ad-42b4-8648-b5fec35c5a90",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -77,8 +110,8 @@
                 },
                 {
                     "name": "right",
-                    "id": "74b7064b-7606-4b8a-b5d1-969e538f7755",
-                    "path": "<Keyboard>/d",
+                    "id": "58b4ab87-d007-47ef-a0aa-84a484c40956",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -98,9 +131,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
+                    "name": "WASD",
                     "id": "ee5cbbd9-37da-4811-bfbd-dcdfb852fb1b",
-                    "path": "1DAxis",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -109,8 +142,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Negative",
-                    "id": "7d387c0c-10ec-4d24-8cb4-dd250a85092a",
+                    "name": "Left",
+                    "id": "2ea4c63a-46d0-4de6-ba1c-5a09c2e447cf",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -120,8 +153,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Positive",
-                    "id": "82568f26-4498-4106-b9c6-ac8dfeba1ae4",
+                    "name": "Right",
+                    "id": "88ddcfb8-926b-43c8-9e92-67a55d4c8cee",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -143,6 +176,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Quit",
+                    "type": "Button",
+                    "id": "90ace3d6-1d67-4afe-93be-a9e870cc2fcc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -154,6 +195,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0bffa5c3-2d41-4605-a952-9f7205504947",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
