@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameObject _turrent;
     [SerializeField] private float _turnSpeed, _turnTurretSpeed;
 
+    private float _viesJoueur = 3;
+    private UImanager _uiManager;
     private Vector3 _direction;
     private Rigidbody2D _rb;
     private bool isMoving = false, isTurning = false;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start(){
         _rb = this.GetComponent<Rigidbody2D>();
+        _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
 
         Set_Controls();
     }
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour {
 
     private void turnBody_performed(InputAction.CallbackContext obj)
     {
+        Debug.Log("test");
         if (!isMoving)
         {
             isTurning = true;
@@ -104,4 +108,21 @@ public class Player : MonoBehaviour {
         _turrent.transform.right = diff* _turnTurretSpeed;
     }
 
+    /*
+    *
+    *   À FAIRE
+    *
+    */
+    private void turnAction_canceled(InputAction.CallbackContext obj){
+        
+    }
+
+    public void Take_Damage() {
+        _viesJoueur--;
+        _uiManager.RemovelifeDisplay();
+
+        if(_viesJoueur < 1) {
+            Destroy(this.gameObject);
+        }
+    }
 }
