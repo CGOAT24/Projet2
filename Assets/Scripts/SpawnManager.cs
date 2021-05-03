@@ -8,9 +8,11 @@ public class SpawnManager : MonoBehaviour
     private float _xPos;
     private float _yPos;
     private int _enemyCount;
+    private UImanager _uiManager;
 
     void Start()
     {
+        _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
         StartCoroutine(EnemySpawn());
     }
 
@@ -49,5 +51,6 @@ public class SpawnManager : MonoBehaviour
     public void DeductFromEnemyCount()
     {
         --_enemyCount;
+        _uiManager.AjouterScore(10);
     }
 }

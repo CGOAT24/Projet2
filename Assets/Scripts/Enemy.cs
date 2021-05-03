@@ -10,9 +10,11 @@ public class Enemy : MonoBehaviour
     private Vector2 _movement;
     private SpawnManager _spawnManager;
 
+
     void Awake()
     {
         _spawnManager = FindObjectOfType<SpawnManager>();
+
     }
 
     // Start is called before the first frame update
