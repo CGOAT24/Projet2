@@ -6,40 +6,56 @@ public class Enemy : MonoBehaviour
 {
     private Transform _player;
     [SerializeField] private float _speed = 5f;
-    private Rigidbody2D _rb;
-    private Vector2 _movement;
+    [SerializeField] private float _sniperStoppingDistance = 5f;
+    [SerializeField] private float _soldierStoppingDistance;
+    [SerializeField] private float _startTimeBetweenShots;
+    [SerializeField] private GameObject _projectile = default;
     private SpawnManager _spawnManager;
+    private float _timeBetweenShots;
+    private bool _isSniper;
+    private bool _canShoot;
+    
 
     void Awake()
     {
         _spawnManager = FindObjectOfType<SpawnManager>();
+        _timeBetweenShots = _startTimeBetweenShots;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var direction = _player.position - transform.position;
-        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        _rb.rotation = angle;
-        direction.Normalize();
-        _movement = direction;
-    }
+        if (Vector2.Distance(transform.position, _player.position) > _sniperStoppingDistance)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
+        }
+        else if (Vector2.Distance(transform.position, _player.position) < _sniperStoppingDistance)
+        {
+            if (!_canShoot)
+            {
+                _canShoot = true;
+            }
+            transform.position = transform.position;
+        }
 
-    private void FixedUpdate()
-    {
-        MoveCharacter(_movement);
-    }
-
-    public void MoveCharacter(Vector2 direction)
-    {
-        _rb.MovePosition((Vector2)transform.position + (direction * _speed * Time.deltaTime));
+        if (_canShoot)
+        {
+            if (_timeBetweenShots <= 0)
+            {
+                Instantiate(_projectile, transform.position, Quaternion.identity);
+                _timeBetweenShots = _startTimeBetweenShots;
+            }
+            else
+            {
+                _timeBetweenShots -= Time.deltaTime;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
