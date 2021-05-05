@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
     private float _timeBetweenShots;
     private bool _isSniper;
     private bool _canShoot;
-    
+
+
 
     void Awake()
     {

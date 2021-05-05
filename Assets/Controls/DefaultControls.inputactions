@@ -6,7 +6,7 @@
             "id": "27f95fd0-1b55-46f3-8f53-c2ff5c1dd04a",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "Move_Forward",
                     "type": "Value",
                     "id": "ffd3d5bd-ae7b-4dab-9d9e-d79b01874df1",
                     "expectedControlType": "Vector2",
@@ -22,9 +22,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Turn",
+                    "name": "Turn_Turret",
                     "type": "Value",
-                    "id": "e16c0e3e-391b-4b72-97b7-232a9e5e4aa1",
+                    "id": "9ccc7011-bd88-47b5-9016-735aa199b6e5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Turn_Body",
+                    "type": "Value",
+                    "id": "c10cca20-caec-4be7-b9ed-43d67320924c",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -38,7 +46,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Move_Forward",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -49,7 +57,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Move_Forward",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -60,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Move_Forward",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -71,7 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Move_Forward",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -82,7 +90,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Move_Forward",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -93,29 +101,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "f4837a4d-b5ad-42b4-8648-b5fec35c5a90",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "58b4ab87-d007-47ef-a0aa-84a484c40956",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "action": "Move_Forward",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -131,35 +117,79 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "78d23486-6849-4466-99cb-3c420654208e",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn_Turret",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "WASD",
-                    "id": "ee5cbbd9-37da-4811-bfbd-dcdfb852fb1b",
+                    "id": "56d07580-f623-4c0d-b8c6-da75f3144dc6",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Turn",
+                    "action": "Turn_Body",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Left",
-                    "id": "2ea4c63a-46d0-4de6-ba1c-5a09c2e447cf",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "88ddcfb8-926b-43c8-9e92-67a55d4c8cee",
+                    "name": "up",
+                    "id": "1180ce11-6a13-4d9b-a2c3-0eb359103276",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Turn",
+                    "action": "Turn_Body",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "037f6ccf-ee18-4f42-a731-6338e83de423",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn_Body",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Arrow Keys",
+                    "id": "76f80ddd-b55c-4f7a-b3d9-8fa2779f0c91",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn_Body",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "e946a4d4-f65c-4001-bfe9-c39a050c06ed",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn_Body",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "0beeb1f0-943a-4cb2-9320-07bbf92127c6",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn_Body",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
@@ -176,14 +206,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Quit",
-                    "type": "Button",
-                    "id": "90ace3d6-1d67-4afe-93be-a9e870cc2fcc",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -195,17 +217,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0bffa5c3-2d41-4605-a952-9f7205504947",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
