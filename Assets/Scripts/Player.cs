@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private float _turnSpeed, _turnTurretSpeed;
 
     private float _viesJoueur = 3;
-    private UImanager _uiManager;
+    //private UImanager _uiManager;
     private Vector3 _direction;
     private Rigidbody2D _rb;
     private bool isMoving = false, isTurning = false;
@@ -22,16 +22,15 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start(){
         _rb = this.GetComponent<Rigidbody2D>();
-        _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
+        //_uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
 
         Set_Controls();
     }
 
-    private void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Cette fonction sert à mettre en place les controles du joueur
+    /// Elle s'exécute au début du jeu
+    /// </summary>
     private void Set_Controls(){
         InputAction moveAction = _actionAsset.FindAction("Move_Forward");
         moveAction.performed += moveAction_performed;
@@ -53,6 +52,10 @@ public class Player : MonoBehaviour {
         turnBody.Enable();
     }
 
+    /// <summary>
+    /// Cette fonction sert à arrêter la rotation du joueur
+    /// Elle s'exécute lorsque l'utilisateur lâche le bouton de rotation
+    /// </summary>
     private void turnBody_canceled(InputAction.CallbackContext obj)
     {
         if (isTurning)
@@ -62,6 +65,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à faire une rotation du joueur
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton de rotation
+    /// </summary>
     private void turnBody_performed(InputAction.CallbackContext obj)
     {
         Debug.Log("test");
@@ -73,6 +80,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à déplacer le joueur
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton de déplacement
+    /// </summary>
     private void moveAction_performed(InputAction.CallbackContext obj){
         if (!isTurning)
         {
@@ -83,6 +94,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à arrêter le déplacement du joueur
+    /// Elle s'exécute lorsque l'utilisateur lâche le bouton de déplacement
+    /// </summary>
     private void moveAction_canceled(InputAction.CallbackContext obj){
         if (isMoving)
         {
@@ -93,6 +108,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à instancier un gameobject de type missile
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton de tir
+    /// </summary>
     private void fireAction_performed(InputAction.CallbackContext obj){
         Instantiate(_missilePrefab, transform.position, Quaternion.identity);
     }
@@ -117,9 +136,13 @@ public class Player : MonoBehaviour {
         
     }
 
+    /// <summary>
+    /// Cette fonction sert à mettre à jour la vie du joueur
+    /// Cette fonction s'exécute lorsque le joueur prend du dégat
+    /// </summary>
     public void Take_Damage() {
         _viesJoueur--;
-        _uiManager.RemovelifeDisplay();
+        //_uiManager.RemovelifeDisplay();
 
         if(_viesJoueur < 1) {
             Destroy(this.gameObject);

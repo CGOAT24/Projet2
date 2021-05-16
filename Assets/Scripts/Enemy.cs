@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
     private SpawnManager _spawnManager;
 
 
+    /// <summary>
+    /// Cette fonction sert à trouver le gameobject de type SpawnManager
+    /// S'exécute au début de l'instanciation de l'objet
+    /// </summary>
     void Awake()
     {
         _spawnManager = FindObjectOfType<SpawnManager>();
@@ -39,11 +43,19 @@ public class Enemy : MonoBehaviour
         MoveCharacter(_movement);
     }
 
+    /// <summary>
+    /// Sert à appliquer une force au rigidbody du gameobject
+    /// </summary>
+    /// <param name="direction">direction que va prendre le rigidbody</param>
     public void MoveCharacter(Vector2 direction)
     {
         _rb.MovePosition((Vector2)transform.position + (direction * _speed * Time.deltaTime));
     }
 
+    /// <summary>
+    /// Cette fonction s'exécute lorsque le gameobject entre en contact avec un autre collider
+    /// </summary>
+    /// <param name="other">gameobject en contact avec l'ennemie</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

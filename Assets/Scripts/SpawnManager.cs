@@ -10,12 +10,17 @@ public class SpawnManager : MonoBehaviour
     private int _enemyCount;
     private UImanager _uiManager;
 
+    // Start is called before the first frame update
     void Start()
     {
         _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
         StartCoroutine(EnemySpawn());
     }
 
+    /// <summary>
+    /// Cette coroutine sert à gêrer l'instanciation d'ennemis
+    /// Elle s'exécute lorsque le nombre d'ennemi est plus petit que 10
+    /// </summary>
     IEnumerator EnemySpawn()
     {
         while (_enemyCount < 10)
@@ -48,6 +53,10 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cette fonction s'exécute lorsqu'un ennemi est détruit
+    /// Elle sert à mettre à jour le nombre d'ennemis
+    /// </summary>
     public void DeductFromEnemyCount()
     {
         --_enemyCount;

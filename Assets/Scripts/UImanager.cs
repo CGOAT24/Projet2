@@ -18,6 +18,7 @@ public class UImanager : MonoBehaviour{
 
     public int _score { get; private set; }
 
+    // Start is called before the first frame update
     void Start(){
         InputAction pauseMenu = _actionAsset.FindAction("PauseMenu");
         pauseMenu.performed += pauseMenu_performed;
@@ -26,6 +27,10 @@ public class UImanager : MonoBehaviour{
         _pausePanel.SetActive(false);
     }
 
+    /// <summary>
+    /// Cette fonction sert à arrêter le jeu et à afficher le menu
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton pause
+    /// </summary>
     private void pauseMenu_performed(InputAction.CallbackContext obj){
         if(!_isPaused){
             _isPaused = true;
@@ -42,10 +47,18 @@ public class UImanager : MonoBehaviour{
 
     }
 
+    /// <summary>
+    /// Cette fonction sert à mettre à jour le score du joueur
+    /// Elle s'exécute lorsqu'un ennemi est détruit
+    /// </summary>
     private void UpdateScore() {
         _txtScore.text = "Score: " + _score.ToString();
     }
 
+    /// <summary>
+    /// Cette fonction sert à résumer le déroulement du jeu
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton pause alors que le jeu est arrêté
+    /// </summary>
     public void Resume_Game(){
             _isPaused = false;
             _GamePanel.SetActive(true);
@@ -53,6 +66,10 @@ public class UImanager : MonoBehaviour{
             Time.timeScale = 1;
     }
 
+    /// <summary>
+    /// Cette fonction sert à mettre à jour le nombre de vie affiché dans le ui 
+    /// Elle s'exécute lorsque le joueur perd une vie
+    /// </summary>
     public void RemovelifeDisplay() {
         _liveSprites.RemoveAt(_liveSprites.Count);
         if(_liveSprites.Count == 0){
@@ -63,11 +80,20 @@ public class UImanager : MonoBehaviour{
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à mettre à jour le score du joueur dans le ui
+    /// Elle s'exécute lorsqu'un ennemi est détruit
+    /// </summary>
+    /// <param name="points">nombre de points à ajouter</param>
     public void AjouterScore(int points) {
         _score += points;
         UpdateScore();
     }
 
+    /// <summary>
+    /// Cette fonction sert à retourner au menu principal
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton menu principal
+    /// </summary>
     public void GoMainMenu() {
         SceneManager.LoadScene(0);
     }
