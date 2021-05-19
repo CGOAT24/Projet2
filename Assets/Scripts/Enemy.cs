@@ -17,6 +17,10 @@ public class Enemy : MonoBehaviour
 
 
 
+    /// <summary>
+    /// Cette fonction sert � trouver le gameobject de type SpawnManager
+    /// S'ex�cute au d�but de l'instanciation de l'objet
+    /// </summary>
     void Awake()
     {
         _spawnManager = FindObjectOfType<SpawnManager>();
@@ -59,6 +63,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cette fonction s'ex�cute lorsque le gameobject entre en contact avec un autre collider
+    /// </summary>
+    /// <param name="other">gameobject en contact avec l'ennemie</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

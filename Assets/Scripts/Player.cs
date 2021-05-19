@@ -10,11 +10,11 @@ public class Player : MonoBehaviour {
     [SerializeField] private float _vitesse = 10f;
     [SerializeField] private InputActionAsset _actionAsset = default;
     [SerializeField] private GameObject _missilePrefab = default;
-    [SerializeField] private GameObject _turrent;
-    [SerializeField] private float _turnSpeed, _turnTurretSpeed;
+    [SerializeField] private GameObject _turrent, _shootPoint;
+    [SerializeField] private float _turnSpeed, _turnTurretSpeed, shootSpeed;
 
     private float _viesJoueur = 3;
-    private UImanager _uiManager;
+    //private UImanager _uiManager;
     private Vector3 _direction;
     private Rigidbody2D _rb;
     private bool isMoving = false, isTurning = false;
@@ -22,16 +22,20 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start(){
         _rb = this.GetComponent<Rigidbody2D>();
-        _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
+        //_uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
 
         Set_Controls();
     }
 
     private void Update()
     {
-        
+       
     }
 
+    /// <summary>
+    /// Cette fonction sert à mettre en place les controles du joueur
+    /// Elle s'exécute au début du jeu
+    /// </summary>
     private void Set_Controls(){
         InputAction moveAction = _actionAsset.FindAction("Move_Forward");
         moveAction.performed += moveAction_performed;
@@ -53,6 +57,10 @@ public class Player : MonoBehaviour {
         turnBody.Enable();
     }
 
+    /// <summary>
+    /// Cette fonction sert à arrêter la rotation du joueur
+    /// Elle s'exécute lorsque l'utilisateur lâche le bouton de rotation
+    /// </summary>
     private void turnBody_canceled(InputAction.CallbackContext obj)
     {
         if (isTurning)
@@ -62,9 +70,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à faire une rotation du joueur
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton de rotation
+    /// </summary>
     private void turnBody_performed(InputAction.CallbackContext obj)
     {
-        Debug.Log("test");
         if (!isMoving)
         {
             isTurning = true;
@@ -73,6 +84,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à déplacer le joueur
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton de déplacement
+    /// </summary>
     private void moveAction_performed(InputAction.CallbackContext obj){
         if (!isTurning)
         {
@@ -83,6 +98,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à arrêter le déplacement du joueur
+    /// Elle s'exécute lorsque l'utilisateur lâche le bouton de déplacement
+    /// </summary>
     private void moveAction_canceled(InputAction.CallbackContext obj){
         if (isMoving)
         {
@@ -93,8 +112,15 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cette fonction sert à instancier un gameobject de type missile
+    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton de tir
+    /// </summary>
     private void fireAction_performed(InputAction.CallbackContext obj){
-        Instantiate(_missilePrefab, transform.position, Quaternion.identity);
+        GameObject gm = Instantiate(_missilePrefab, _shootPoint.transform.position, Quaternion.identity);
+        gm.transform.rotation = _turrent.transform.rotation;
+        Vector3 r = (-gm.transform.right * shootSpeed);
+        gm.GetComponent<Rigidbody2D>().velocity = r;
     }
 
     /*
@@ -103,9 +129,11 @@ public class Player : MonoBehaviour {
     *
     */
     private void turnAction_performed(InputAction.CallbackContext obj){
-        Vector2 m = obj.ReadValue<Vector2>();
-        Vector3 diff = new Vector3(m.x, m.y, 0) - this.transform.position;
-        _turrent.transform.right = diff* _turnTurretSpeed;
+        var mouse = obj.ReadValue<Vector2>();
+        var screenPoint = Camera.main.WorldToScreenPoint(_turrent.transform.localPosition);
+        var offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
+        var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+        _turrent.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     /*
@@ -117,9 +145,13 @@ public class Player : MonoBehaviour {
         
     }
 
+    /// <summary>
+    /// Cette fonction sert à mettre à jour la vie du joueur
+    /// Cette fonction s'exécute lorsque le joueur prend du dégat
+    /// </summary>
     public void Take_Damage() {
         _viesJoueur--;
-        _uiManager.RemovelifeDisplay();
+        //_uiManager.RemovelifeDisplay();
 
         if(_viesJoueur < 1) {
             Destroy(this.gameObject);
