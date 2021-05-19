@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
 
     private void Update()
     {
-       
+        this.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x, -27f, 27f), Mathf.Clamp(this.transform.position.y, -17.5f, 17.5f));
     }
 
     /// <summary>
