@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Transform _player;
-    [SerializeField] private float _speed = 5f;
+    [SerializeField] private static float _speed = 5f;
+    [SerializeField] private float _speedIncrease = 2f;
     [SerializeField] private float _sniperStoppingDistance = 5f;
-    [SerializeField] private float _soldierStoppingDistance;
     [SerializeField] private float _startTimeBetweenShots;
     [SerializeField] private GameObject _projectile = default;
     private SpawnManager _spawnManager;
@@ -31,11 +32,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Vector2.Distance(transform.position, _player.position) > _sniperStoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
@@ -61,6 +64,12 @@ public class Enemy : MonoBehaviour
                 _timeBetweenShots -= Time.deltaTime;
             }
         }
+    }
+
+    public void IncreaseSpeed()
+    {
+        _speed += _speedIncrease;
+        Debug.Log(_speed);
     }
 
     /// <summary>
