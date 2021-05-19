@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a68a190185b9924999ffebf934fb6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 3022062852747924046, guid: 04fd6ac730969f740ae118b648c3297f, type: 3}
+  _enemyPrefab: {fileID: 5464145357942186699, guid: 43d5efe064c9d2e46ad8ed2551e3c640, type: 3}
 --- !u!4 &607563706
 Transform:
   m_ObjectHideFlags: 0
@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 1721400565}
   - component: {fileID: 1721400567}
   - component: {fileID: 1721400568}
+  - component: {fileID: 1721400569}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -375,3 +376,24 @@ MonoBehaviour:
   _vitesse: 10
   _actionAsset: {fileID: 0}
   _missilePrefab: {fileID: 0}
+--- !u!50 &1721400569
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721400564}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
