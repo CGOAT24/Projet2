@@ -97,5 +97,4 @@ public class UImanager : MonoBehaviour{
     public void GoMainMenu() {
         SceneManager.LoadScene(0);
     }
-
 }
