@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
+        //_uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
         StartCoroutine(EnemySpawn());
     }
 
