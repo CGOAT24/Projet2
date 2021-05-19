@@ -8,11 +8,11 @@ using UnityEngine.UI;
 public class MenuPrincipal : MonoBehaviour{
 
     /// <summary>
-    /// Cette fonction sert à charger la scène principale
-    /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton Jouer
+    /// Sert à charger une scène en fonction de son index
     /// </summary>
-    public void Go_To_Next_Scence() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    /// <param name="index">index de la scène à charger</param>
+    public void Load_Scene(int index) {
+        SceneManager.LoadScene(index);
     }
 
     /// <summary>
