@@ -11,12 +11,12 @@ public class UImanager : MonoBehaviour{
 
     [SerializeField] private InputActionAsset _actionAsset = default;
     [SerializeField] private GameObject _pausePanel = default;
-
     [SerializeField] private TextMeshProUGUI _txtScore = default;
     [SerializeField] private GameObject _GamePanel = default;
     [SerializeField] private List<Image> _liveSprites = default;
 
     public int _score { get; private set; }
+    public bool IsPaused { get => _isPaused; set => _isPaused = value; }
 
     // Start is called before the first frame update
     void Start(){
@@ -44,7 +44,7 @@ public class UImanager : MonoBehaviour{
     }
 
     private void GamerOverSequence() {
-
+        SceneManager.LoadScene(3);
     }
 
     /// <summary>
@@ -74,9 +74,6 @@ public class UImanager : MonoBehaviour{
         _liveSprites.RemoveAt(_liveSprites.Count);
         if(_liveSprites.Count == 0){
             GamerOverSequence();
-        }
-        else {
-
         }
     }
 
