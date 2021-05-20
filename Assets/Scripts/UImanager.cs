@@ -60,10 +60,10 @@ public class UImanager : MonoBehaviour{
     /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton pause alors que le jeu est arrêté
     /// </summary>
     public void Resume_Game(){
-            _isPaused = false;
-            _GamePanel.SetActive(true);
-            _pausePanel.SetActive(false);
-            Time.timeScale = 1;
+        _isPaused = false;
+        _GamePanel.SetActive(true);
+        _pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     /// <summary>

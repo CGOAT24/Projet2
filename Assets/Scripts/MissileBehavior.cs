@@ -6,12 +6,15 @@ public class MissileBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject explosion;
     [SerializeField] private float maxDamageDistance;
+    private UImanager _uiManager;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
         Destroy(this.gameObject, 5);
+        
     }
 
     // Update is called once per frame
@@ -28,8 +31,11 @@ public class MissileBehavior : MonoBehaviour
         foreach (GameObject obj in ennemy)
         {
             Debug.Log(Vector2.Distance(p.transform.position, obj.transform.position));
-            if (Vector2.Distance(p.transform.position, obj.transform.position) <= maxDamageDistance)
+            if (Vector2.Distance(p.transform.position, obj.transform.position) <= maxDamageDistance) {
                 Destroy(obj);
+
+            }
+                
         }
 
         Destroy(p, 1);

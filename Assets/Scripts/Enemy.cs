@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private float _timeBetweenShots;
     private bool _isSniper;
     private bool _canShoot;
+    private UImanager _uiManager;
 
 
 
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        
+        _uiManager = _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
     }
 
     // Update is called once per frame
@@ -82,6 +83,7 @@ public class Enemy : MonoBehaviour
         {
             _spawnManager.DeductFromEnemyCount();
             Destroy(gameObject);
+            _uiManager.AjouterScore(10);
         }
     }
 }
