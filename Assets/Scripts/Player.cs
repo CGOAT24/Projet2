@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private float _turnSpeed, _turnTurretSpeed, shootSpeed;
 
     private float _viesJoueur = 3;
-    //private UImanager _uiManager;
+    private UImanager _uiManager;
     private Vector3 _direction;
     private Rigidbody2D _rb;
     private bool isMoving = false, isTurning = false;
@@ -22,14 +22,14 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start(){
         _rb = this.GetComponent<Rigidbody2D>();
-        //_uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
+        _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
 
         Set_Controls();
     }
 
     private void Update()
     {
-       
+        this.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x, -27f, 27f), Mathf.Clamp(this.transform.position.y, -17.5f, 17.5f));
     }
 
     /// <summary>
@@ -117,10 +117,12 @@ public class Player : MonoBehaviour {
     /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton de tir
     /// </summary>
     private void fireAction_performed(InputAction.CallbackContext obj){
-        GameObject gm = Instantiate(_missilePrefab, _shootPoint.transform.position, Quaternion.identity);
-        gm.transform.rotation = _turrent.transform.rotation;
-        Vector3 r = (-gm.transform.right * shootSpeed);
-        gm.GetComponent<Rigidbody2D>().velocity = r;
+        if (!_uiManager.IsPaused) {
+            GameObject gm = Instantiate(_missilePrefab, _shootPoint.transform.position, Quaternion.identity);
+            gm.transform.rotation = _turrent.transform.rotation;
+            Vector3 r = (-gm.transform.right * shootSpeed);
+            gm.GetComponent<Rigidbody2D>().velocity = r;
+        }
     }
 
     /*
@@ -151,7 +153,7 @@ public class Player : MonoBehaviour {
     /// </summary>
     public void Take_Damage() {
         _viesJoueur--;
-        //_uiManager.RemovelifeDisplay();
+        _uiManager.RemovelifeDisplay();
 
         if(_viesJoueur < 1) {
             Destroy(this.gameObject);

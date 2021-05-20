@@ -9,12 +9,15 @@ public class SpawnManager : MonoBehaviour
     private float _yPos;
     private int _enemyCount;
     private UImanager _uiManager;
+    private Enemy _enemy;
+    private bool firstInvokeRun = true;
 
     // Start is called before the first frame update
     void Start()
     {
         //_uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
         StartCoroutine(EnemySpawn());
+        InvokeRepeating("IncreaseAllEnemiesSpeed", 30f, 30f);
     }
 
     /// <summary>
@@ -51,6 +54,16 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(3f);
             _enemyCount += 1;
         }
+    }
+
+    public void IncreaseAllEnemiesSpeed()
+    {
+        if (firstInvokeRun)
+        {
+            _enemy = FindObjectOfType<Enemy>();
+            firstInvokeRun = false;
+        }
+        _enemy.IncreaseSpeed();
     }
 
     /// <summary>

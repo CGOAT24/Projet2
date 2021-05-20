@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5464145357942186692}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,8 +101,7 @@ MonoBehaviour:
   _sniperStoppingDistance: 5
   _soldierStoppingDistance: 0
   _startTimeBetweenShots: 1
-  _projectile: {fileID: 2983011547041285481, guid: cdc6ab343420f364e81de28ab81865b9,
-    type: 3}
+  _projectile: {fileID: 2983011547041285481, guid: cdc6ab343420f364e81de28ab81865b9, type: 3}
 --- !u!50 &5464145357942186695
 Rigidbody2D:
   serializedVersion: 4
