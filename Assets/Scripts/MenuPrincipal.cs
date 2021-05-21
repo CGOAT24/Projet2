@@ -10,11 +10,7 @@ public class MenuPrincipal : MonoBehaviour{
     private int _score;
 
     public void Start() {
-        _txtScore.text = "Score: " + _score;    
-    }
-
-    private void Get_Score() {
-        _score = UImanager._score;
+        _txtScore.text = "Score: " + UImanager._score;    
     }
 
     /// <summary>

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameObject _turrent, _shootPoint;
     [SerializeField] private float _turnSpeed, _turnTurretSpeed, shootSpeed;
 
-    private float _viesJoueur = 3;
+    private float _viesJoueur = 10;
     private UImanager _uiManager;
     private Vector3 _direction;
     private Rigidbody2D _rb;

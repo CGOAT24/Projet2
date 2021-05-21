@@ -13,10 +13,11 @@ public class UImanager : MonoBehaviour{
     [SerializeField] private GameObject _pausePanel = default;
     [SerializeField] private TextMeshProUGUI _txtScore = default;
     [SerializeField] private GameObject _GamePanel = default;
-    [SerializeField] private List<Image> _liveSprites = default;
+    [SerializeField] private TextMeshProUGUI _txtLives = default;
     [SerializeField] private AudioSource audioSource = default;
 
-    static public int _score { get; private set; }
+    private int lives = 10;
+    public static int _score { get; private set; }
     public bool IsPaused { get => _isPaused; set => _isPaused = value; }
 
     // Start is called before the first frame update
@@ -72,8 +73,10 @@ public class UImanager : MonoBehaviour{
     /// Elle s'exécute lorsque le joueur perd une vie
     /// </summary>
     public void RemovelifeDisplay() {
-        _liveSprites.Remove(_liveSprites[0]);
-        if(_liveSprites.Count == 0){
+        lives--;
+        _txtLives.text = "Vies: " + lives;
+
+        if(lives < 1){
             GamerOverSequence();
         }
     }
