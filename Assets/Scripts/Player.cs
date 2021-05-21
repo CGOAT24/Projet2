@@ -156,7 +156,7 @@ public class Player : MonoBehaviour {
             Take_Damage();
         }
         else if (collision.tag == "Ennemy") {
-            Destroy(collision);
+            Destroy(collision.gameObject);
         }
     }
 }
