@@ -26,7 +26,6 @@ public class UImanager : MonoBehaviour{
 
         pauseMenu.Enable();
         _pausePanel.SetActive(false);
-        Debug.Log(_score.ToString());
     }
 
     /// <summary>
@@ -39,7 +38,6 @@ public class UImanager : MonoBehaviour{
             Time.timeScale = 0;
             _pausePanel.SetActive(true);
             _GamePanel.SetActive(false);
-            Debug.Log(_score.ToString());
         }
         else if(_isPaused){
            Resume_Game();
@@ -74,7 +72,7 @@ public class UImanager : MonoBehaviour{
     /// Elle s'exécute lorsque le joueur perd une vie
     /// </summary>
     public void RemovelifeDisplay() {
-        _liveSprites.RemoveAt(_liveSprites.Count);
+        _liveSprites.Remove(_liveSprites[0]);
         if(_liveSprites.Count == 0){
             GamerOverSequence();
         }

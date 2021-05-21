@@ -30,7 +30,6 @@ public class MissileBehavior : MonoBehaviour
         var ennemy = GameObject.FindGameObjectsWithTag("Ennemy");
         foreach (GameObject obj in ennemy)
         {
-            Debug.Log(Vector2.Distance(p.transform.position, obj.transform.position));
             if (Vector2.Distance(p.transform.position, obj.transform.position) <= maxDamageDistance) {
                 Destroy(obj);
 

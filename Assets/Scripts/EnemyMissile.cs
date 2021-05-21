@@ -28,9 +28,14 @@ public class EnemyMissile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        
         if (other.CompareTag("Player"))
         {
+            Debug.Log("allo");
+            Player _tank = other.GetComponent<Player>();
+            _tank.Take_Damage();
             DestroyProjectile();
+            
         }
     }
 

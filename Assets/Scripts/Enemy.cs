@@ -70,7 +70,6 @@ public class Enemy : MonoBehaviour
     public void IncreaseSpeed()
     {
         _speed += _speedIncrease;
-        Debug.Log(_speed);
     }
 
     /// <summary>

@@ -125,11 +125,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    /*
-    *
-    *   À FAIRE
-    *
-    */
     private void turnAction_performed(InputAction.CallbackContext obj){
         var mouse = obj.ReadValue<Vector2>();
         var screenPoint = Camera.main.WorldToScreenPoint(_turrent.transform.localPosition);
@@ -138,11 +133,6 @@ public class Player : MonoBehaviour {
         _turrent.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    /*
-    *
-    *   À FAIRE
-    *
-    */
     private void turnAction_canceled(InputAction.CallbackContext obj){
         
     }
@@ -161,8 +151,12 @@ public class Player : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("EnnemyBullet")) {
+        Debug.Log(collision.tag.ToString());
+        if (collision.tag == "EnnemyBullet") {
             Take_Damage();
+        }
+        else if (collision.tag == "Ennemy") {
+            Destroy(collision);
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4640590348240776569}
   - component: {fileID: 513890938064148798}
   - component: {fileID: -6791893893449682612}
+  - component: {fileID: 1732151165148137828}
   m_Layer: 0
   m_Name: EnemyMissile
   m_TagString: EnnemyBullet
@@ -96,3 +97,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+--- !u!58 &1732151165148137828
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2983011547041285481}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.00068531756}
+  serializedVersion: 2
+  m_Radius: 0.46705657
