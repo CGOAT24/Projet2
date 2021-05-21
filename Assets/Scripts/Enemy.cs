@@ -6,14 +6,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Transform _player;
+    private Rigidbody2D _rb;
     [SerializeField] private static float _speed = 5f;
     [SerializeField] private float _speedIncrease = 2f;
     [SerializeField] private float _sniperStoppingDistance = 5f;
     [SerializeField] private float _startTimeBetweenShots;
     [SerializeField] private GameObject _projectile = default;
+    private Vector2 _movement;
     private SpawnManager _spawnManager;
     private float _timeBetweenShots;
-    private bool _isSniper;
     private bool _canShoot;
     private UImanager _uiManager;
 
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _rb = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _uiManager = _uiManager = GameObject.Find("UIManager").GetComponent<UImanager>();
     }
@@ -39,7 +41,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 dir = _player.position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 270;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         if (Vector2.Distance(transform.position, _player.position) > _sniperStoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);

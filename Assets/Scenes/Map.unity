@@ -1255,6 +1255,7 @@ MonoBehaviour:
   _turnSpeed: 25
   _turnTurretSpeed: 0
   shootSpeed: 5
+  reloadTime: 0
 --- !u!1 &633816762
 GameObject:
   m_ObjectHideFlags: 0
