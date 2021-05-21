@@ -11,13 +11,13 @@ public class Player : MonoBehaviour {
     [SerializeField] private InputActionAsset _actionAsset = default;
     [SerializeField] private GameObject _missilePrefab = default;
     [SerializeField] private GameObject _turrent, _shootPoint;
-    [SerializeField] private float _turnSpeed, _turnTurretSpeed, shootSpeed;
+    [SerializeField] private float _turnSpeed, _turnTurretSpeed, shootSpeed, reloadTime;
 
-    private float _viesJoueur = 10;
+    private float _viesJoueur = 10, nextFire;
     private UImanager _uiManager;
     private Vector3 _direction;
     private Rigidbody2D _rb;
-    private bool isMoving = false, isTurning = false;
+    private bool isMoving = false, isTurning = false, canShoot = true;
 
     // Start is called before the first frame update
     void Start(){
@@ -30,6 +30,10 @@ public class Player : MonoBehaviour {
     private void Update()
     {
         this.transform.position = new Vector2(Mathf.Clamp(this.transform.position.x, -27f, 27f), Mathf.Clamp(this.transform.position.y, -17.5f, 17.5f));
+
+        if (!canShoot)
+            if (Time.time > nextFire)
+                canShoot = true;
     }
 
     /// <summary>
@@ -117,11 +121,13 @@ public class Player : MonoBehaviour {
     /// Elle s'exécute lorsque l'utilisateur appuie sur le bouton de tir
     /// </summary>
     private void fireAction_performed(InputAction.CallbackContext obj){
-        if (!_uiManager.IsPaused) {
+        if (!_uiManager.IsPaused && canShoot) {
             GameObject gm = Instantiate(_missilePrefab, _shootPoint.transform.position, Quaternion.identity);
             gm.transform.rotation = _turrent.transform.rotation;
             Vector3 r = (-gm.transform.right * shootSpeed);
             gm.GetComponent<Rigidbody2D>().velocity = r;
+            nextFire = Time.time + reloadTime;
+            canShoot = false;
         }
     }
 
