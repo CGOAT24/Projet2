@@ -3413,6 +3413,7 @@ MonoBehaviour:
   - {fileID: 319852608}
   - {fileID: 187610891}
   - {fileID: 908056300}
+  audioSource: {fileID: 694569566}
 --- !u!4 &1577818996
 Transform:
   m_ObjectHideFlags: 0
