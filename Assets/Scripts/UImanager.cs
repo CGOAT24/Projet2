@@ -14,6 +14,7 @@ public class UImanager : MonoBehaviour{
     [SerializeField] private TextMeshProUGUI _txtScore = default;
     [SerializeField] private GameObject _GamePanel = default;
     [SerializeField] private List<Image> _liveSprites = default;
+    [SerializeField] private AudioSource audioSource = default;
 
     public int _score { get; private set; }
     public bool IsPaused { get => _isPaused; set => _isPaused = value; }
@@ -93,5 +94,9 @@ public class UImanager : MonoBehaviour{
     /// </summary>
     public void GoMainMenu() {
         SceneManager.LoadScene(0);
+    }
+    
+    public void Toggle_sound() {
+        audioSource.mute = !audioSource.mute;
     }
 }
