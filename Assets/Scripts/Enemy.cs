@@ -85,5 +85,11 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             _uiManager.AjouterScore(10);
         }
+        else if(other.CompareTag("Bullet")) 
+        {
+            _spawnManager.DeductFromEnemyCount();
+            Destroy(gameObject);
+            _uiManager.AjouterScore(10);
+        }
     }
 }

@@ -16,7 +16,7 @@ public class UImanager : MonoBehaviour{
     [SerializeField] private List<Image> _liveSprites = default;
     [SerializeField] private AudioSource audioSource = default;
 
-    public int _score { get; private set; }
+    static public int _score { get; private set; }
     public bool IsPaused { get => _isPaused; set => _isPaused = value; }
 
     // Start is called before the first frame update
@@ -26,6 +26,7 @@ public class UImanager : MonoBehaviour{
 
         pauseMenu.Enable();
         _pausePanel.SetActive(false);
+        Debug.Log(_score.ToString());
     }
 
     /// <summary>
@@ -38,6 +39,7 @@ public class UImanager : MonoBehaviour{
             Time.timeScale = 0;
             _pausePanel.SetActive(true);
             _GamePanel.SetActive(false);
+            Debug.Log(_score.ToString());
         }
         else if(_isPaused){
            Resume_Game();

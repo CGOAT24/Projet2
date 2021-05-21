@@ -6,6 +6,16 @@ using TMPro;
 using UnityEngine.UI;
 
 public class MenuPrincipal : MonoBehaviour{
+    [SerializeField] private TextMeshProUGUI _txtScore = default;
+    private int _score;
+
+    public void Start() {
+        _txtScore.text = "Score: " + _score;    
+    }
+
+    private void Get_Score() {
+        _score = UImanager._score;
+    }
 
     /// <summary>
     /// Sert à charger une scène en fonction de son index
@@ -22,4 +32,6 @@ public class MenuPrincipal : MonoBehaviour{
     public void Quit_Game() {
         Application.Quit();
     }
+
+    
 }
